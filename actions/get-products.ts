@@ -18,9 +18,11 @@ const getProducts = async (query: Query): Promise<Product[]> => {
             colorId: query.colorId,
             sizeId: query.sizeId,
             isFeatured: query.isFeatured,
-            categoryId: query.isFeatured,
+            categoryId: query.categoryId,
         }
     })
+
+    console.log(full_url)
 
     const res = await fetch(full_url)
 
