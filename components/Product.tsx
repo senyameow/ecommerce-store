@@ -1,9 +1,10 @@
+'use client'
 import { Product } from '@/types'
 import { Expand, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 import Currency from './Currency'
+import { useRouter } from 'next/navigation'
 
 interface ProductProps {
     product: Product
@@ -11,10 +12,16 @@ interface ProductProps {
 
 const ProductCard = ({ product }: ProductProps) => {
 
+    const router = useRouter()
+
+    const handleClick = () => {
+        router.push(`/products/${product.id}`)
+    }
+
     console.log(product)
 
     return (
-        <div className='bg-white p-2 border border-neutral-300 rounded-xl gap-2 group relative cursor-pointer '>
+        <div onClick={handleClick} className='bg-white p-2 border border-neutral-300 rounded-xl gap-2 group relative cursor-pointer '>
             <div className=' relative aspect-square bg-gray-100 rounded-xl mb-3'>
                 <Image src={product?.Image?.[0]?.url} alt='product image' fill className='rounded-xl object-cover' />
             </div>
