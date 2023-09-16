@@ -3,19 +3,20 @@ import React from 'react'
 import { useParams, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { Category } from '@/types'
 
 interface MainNavProps {
-    stores: any
+    categories: Category[]
 }
 
-const MainNav = ({ stores }: MainNavProps) => {
+const MainNav = ({ categories }: MainNavProps) => {
 
     const params = useParams()
     const pathname = usePathname()
 
-    const routes = stores.map(store => ({
+    const routes = categories.map(store => ({
         href: `/category/${store.id}`,
-        label: `${store.name}`,
+        label: `${store.label}`,
         active: pathname === `/category/${store.id}`
     }))
 
