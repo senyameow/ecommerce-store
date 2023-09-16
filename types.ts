@@ -15,6 +15,25 @@ export interface Product {
     label: string;
     category: Category;
     price: string;
-    images: string[];
+    images: Image[];
+    isFeatured: boolean;
+    size: Size;
+    color: Color;
+}
 
+export interface Image {
+    id: string;
+    url: string;
+}
+
+export interface Size {
+    id: string;
+    value: string;
+    label: string;
+}
+
+export interface Color {
+    id: string;
+    value: string;
+    label: string;
 }
