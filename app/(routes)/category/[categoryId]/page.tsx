@@ -9,6 +9,7 @@ import Filter from "@/components/Filter";
 import NoResults from "@/components/NoResults";
 import { cn } from "@/lib/utils";
 import ProductCard from "@/components/Product";
+import MobileFilters from "@/components/MobileFilters";
 export const revalidate = 0
 
 export default async function CategoryPage({ params, searchParams }: { params: { categoryId: string }, searchParams: { colorId: string, sizeId: string } }) {
@@ -32,10 +33,12 @@ export default async function CategoryPage({ params, searchParams }: { params: {
                 </div>
                 <div className="px-4 sm:px-6 lg:px-8 pb-24">
                     <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
+                        <MobileFilters sizes={sizes} colors={colors} />
                         <div className="hidden lg:block">
                             <Filter data={sizes} title="Sizes" valueKey="sizeId" />
                             <Filter data={colors} title="Colors" valueKey="colorId" />
                         </div>
+
                         <div className={cn(`mt-6 lg:col-span-4 lg:mt-0`)}>
                             {products.length === 0 && <NoResults />}
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
