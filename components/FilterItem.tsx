@@ -34,7 +34,7 @@ const FilterItem = ({ item, valueKey }: FilterItemProps) => {
 
 
     return (
-        <Link href={url} className={cn(`px-2 py-3 border rounded-md text-lg font-bold hover:bg-gray-100 transition`, selectedValue === item.id && 'bg-black text-white hover:bg-black/80 hover:text-gray-100')}>
+        <Link href={url} className={cn(`cursor-pointer px-2 py-3 border rounded-md text-lg font-bold hover:bg-gray-100 transition`, selectedValue === item.id && 'bg-black text-white hover:bg-black/80 hover:text-gray-100')}>
             {item.label}
         </Link>
     )

@@ -6,6 +6,9 @@ import getSizes from "@/actions/get-sizes";
 import Billboard from "@/components/Billboard";
 import Container from "@/components/ui/Container";
 import Filter from "@/components/Filter";
+import NoResults from "@/components/NoResults";
+import { cn } from "@/lib/utils";
+import ProductCard from "@/components/Product";
 export const revalidate = 0
 
 export default async function CategoryPage({ params, searchParams }: { params: { categoryId: string }, searchParams: { colorId: string, sizeId: string } }) {
@@ -33,10 +36,13 @@ export default async function CategoryPage({ params, searchParams }: { params: {
                             <Filter data={sizes} title="Sizes" valueKey="sizeId" />
                             <Filter data={colors} title="Colors" valueKey="colorId" />
                         </div>
-                        <div>
-                            {products.map(product => (
-                                <div key={product.id}>{product.label}</div>
-                            ))}
+                        <div className={cn(`mt-6 lg:col-span-4 lg:mt-0`)}>
+                            {products.length === 0 && <NoResults />}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                {products.map(product => (
+                                    <ProductCard key={product.id} product={product} />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
