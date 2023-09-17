@@ -19,6 +19,15 @@ const Galery = ({ images }: GaleryProps) => {
                     ))}
                 </Tab.List>
             </div>
+
+            <Tab.Panels className={`aspect-square w-full h-full rounded-lg relative`}>
+                {images?.map(image => (
+                    <Tab.Panel key={image.id} className={`w-full h-full relative`}>
+                        <Image src={image.url} alt='main image' className='object-cover rounded-lg' fill />
+                    </Tab.Panel>
+                ))}
+            </Tab.Panels>
+
         </Tab.Group>
     )
 }

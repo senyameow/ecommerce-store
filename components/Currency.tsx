@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'
 
 interface CurrencyProps {
     data: string
+    size?: string;
 }
 
-const Currency = ({ data }: CurrencyProps) => {
+const Currency = ({ data, size = 'md' }: CurrencyProps) => {
 
     const [isMounted, setIsMounted] = useState(false)
 
@@ -16,7 +17,7 @@ const Currency = ({ data }: CurrencyProps) => {
     if (!isMounted) return null
 
     return (
-        <div className='font-bold text-md'>
+        <div className={`font-bold text-${size}`}>
             {formatter.format(Number(data))}
         </div>
     )
