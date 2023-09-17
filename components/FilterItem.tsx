@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import React from 'react'
 
 import qs from 'query-string'
+import { cn } from '@/lib/utils'
 
 interface FilterItemProps {
     item: Size | Color
@@ -15,6 +16,8 @@ const FilterItem = ({ item, valueKey }: FilterItemProps) => {
 
     const searchParams = useSearchParams()
     const pathname = usePathname()
+
+    const selectedValue = searchParams.get(valueKey)
 
     const current = qs.parse(searchParams.toString())
 
@@ -28,11 +31,10 @@ const FilterItem = ({ item, valueKey }: FilterItemProps) => {
         query
     })
 
-    console.log(url)
 
 
     return (
-        <Link href={url} className='px-2 py-3 border rounded-md text-lg font-bold'>
+        <Link href={url} className={cn(`px-2 py-3 border rounded-md text-lg font-bold hover:bg-gray-100 transition`, selectedValue === item.id && 'bg-black text-white hover:bg-black/80 hover:text-gray-100')}>
             {item.label}
         </Link>
     )
