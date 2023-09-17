@@ -1,5 +1,6 @@
 import getProduct from "@/actions/get-product";
 import getProducts from "@/actions/get-products";
+import Galery from "@/components/Galery";
 import ProductList from "@/components/ProductList";
 import Container from "@/components/ui/Container";
 import { Product } from "@/types";
@@ -28,9 +29,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <Container>
                 <div className="px-4 py-10 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:items-start">
-                        <div className="relative rounded-xl ">
-                            <Image src={'https://utfs.io/f/79761703-9c39-441d-92bd-d8d4e4c40b47-ha3ncj.jpg'} alt="product image" fill className="rounded-xl aspect-square object-cover" />
-                        </div>
+                        <Galery images={product?.Image} />
                         <div>
                             info
                         </div>
