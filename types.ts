@@ -7,7 +7,11 @@ export interface Billboard {
 export interface Category {
     id: string;
     label: string;
-    billboard: Billboard
+    Billboard: Billboard
+    billboardId: string;
+    storeId: string;
+    created_at: string
+    updated_at: string
 }
 
 export interface Product {

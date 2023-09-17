@@ -14,10 +14,10 @@ const MainNav = ({ categories }: MainNavProps) => {
     const params = useParams()
     const pathname = usePathname()
 
-    const routes = categories.map(store => ({
-        href: `/category/${store.id}`,
-        label: `${store.label}`,
-        active: pathname === `/category/${store.id}`
+    const routes = categories.map(category => ({
+        href: `/category/${category.id}`,
+        label: `${category.label}`,
+        active: pathname === `/category/${category.id}`
     }))
 
     return (

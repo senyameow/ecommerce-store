@@ -6,8 +6,6 @@ const url = `${process.env.NEXT_PUBLIC_API_BILLBOARD}`
 
 const getBillboard = async (id: string): Promise<Billboard> => {
     const res = await fetch(`${url}${id}/get/${storeId}`)
-    console.log(`${url}${id}/get${storeId}`)
-    console.log(res)
 
     return res.json()
 }
