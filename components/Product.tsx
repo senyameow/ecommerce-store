@@ -5,6 +5,7 @@ import Image from 'next/image'
 import React from 'react'
 import Currency from './Currency'
 import { useRouter } from 'next/navigation'
+import { useModalStore } from '@/hooks/use-modal-store'
 
 interface ProductProps {
     product: Product
@@ -12,10 +13,17 @@ interface ProductProps {
 
 const ProductCard = ({ product }: ProductProps) => {
 
+    const { onOpen } = useModalStore()
+
     const router = useRouter()
 
     const handleClick = () => {
         router.push(`/products/${product.id}`)
+    }
+
+    const onModalOpen = (e: any) => {
+        e.stopPropagation()
+        onOpen(product)
     }
 
     console.log(product)
@@ -26,7 +34,7 @@ const ProductCard = ({ product }: ProductProps) => {
                 <Image src={product?.Image?.[0]?.url} alt='product image' fill className='rounded-xl object-cover' />
             </div>
             <div className='opacity-0 group-hover:opacity-100 absolute flex items-center justify-around w-[80%] ml-4 transition top-[50%]'>
-                <button className='w-[40px] h-[40px]  rounded-full bg-white flex items-center justify-center border  hover:bg-gray-100 transition'>
+                <button onClick={onModalOpen} className='w-[40px] h-[40px]  rounded-full bg-white flex items-center justify-center border  hover:bg-gray-100 transition'>
                     <Expand className='w-4 h-4' />
                 </button>
                 <button className='w-[40px] h-[40px]  rounded-full bg-white flex items-center justify-center border  hover:bg-gray-100 transition'>
