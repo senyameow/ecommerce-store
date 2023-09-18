@@ -2,10 +2,11 @@
 import { Product } from '@/types'
 import { Expand, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import Currency from './Currency'
 import { useRouter } from 'next/navigation'
 import { useModalStore } from '@/hooks/use-modal-store'
+import { useCart } from '@/hooks/use-cart-store'
 
 interface ProductProps {
     product: Product
@@ -15,9 +16,12 @@ const ProductCard = ({ product }: ProductProps) => {
 
     const { onOpen } = useModalStore()
 
+    const { addItem } = useCart()
+
     const router = useRouter()
 
-    const handleClick = () => {
+    const handleClick = (e: any) => {
+        e.stopPropagation()
         router.push(`/products/${product.id}`)
     }
 
@@ -26,7 +30,10 @@ const ProductCard = ({ product }: ProductProps) => {
         onOpen(product)
     }
 
-    console.log(product)
+    const addToCart = (event: any) => {
+        event.stopPropagation()
+        addItem(product)
+    }
 
     return (
         <div onClick={handleClick} className='bg-white p-2 border border-neutral-300 rounded-xl gap-2 group relative cursor-pointer '>
@@ -37,7 +44,7 @@ const ProductCard = ({ product }: ProductProps) => {
                 <button onClick={onModalOpen} className='w-[40px] h-[40px]  rounded-full bg-white flex items-center justify-center border  hover:bg-gray-100 transition'>
                     <Expand className='w-4 h-4' />
                 </button>
-                <button className='w-[40px] h-[40px]  rounded-full bg-white flex items-center justify-center border  hover:bg-gray-100 transition'>
+                <button onClick={addToCart} className='w-[40px] h-[40px]  rounded-full bg-white flex items-center justify-center border  hover:bg-gray-100 transition'>
                     <ShoppingCart className='w-4 h-4' />
                 </button>
             </div>
