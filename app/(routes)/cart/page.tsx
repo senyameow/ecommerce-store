@@ -1,6 +1,7 @@
 'use client'
 import CartItem from '@/components/CartItem'
 import NoResults from '@/components/NoResults'
+import Summary from '@/components/Summary'
 import Container from '@/components/ui/Container'
 import { useCart } from '@/hooks/use-cart-store'
 import React, { useEffect, useState } from 'react'
@@ -27,9 +28,7 @@ const CartPage = () => {
                                 ))}
                             </ul>
                         </div>
-                        <div className='col-span-5 sticky right-0 top-12 border-red-400 border '>
-                            summary
-                        </div>
+                        <Summary items={items} />
                     </div>
                 </div>
             </Container>
