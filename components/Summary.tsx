@@ -50,7 +50,7 @@ const Summary = ({ items }: SummaryProps) => {
                     <span className='text-xl'>{formatter.format(items?.reduce((acc, item) => acc + Number(item.price), 0))}</span>
                 </div>
                 <div className='w-full'>
-                    <Button onClick={onCheckout} className='py-4 rounded-full w-full'>
+                    <Button disabled={items.length === 0} onClick={onCheckout} className='py-4 rounded-full w-full'>
                         Checkout
                     </Button>
                 </div>
