@@ -20,10 +20,9 @@ const Summary = ({ items }: SummaryProps) => {
 
     const onCheckout = async () => {
         try {
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout${process.env.NEXT_PUBLIC_STOREID}`, { productIds: items.map(item => item.id) })
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout/?storeId=${process.env.NEXT_PUBLIC_STOREID}`, { productIds: items.map(item => item.id) })
             window.location = res.data.url
         } catch (error) {
-            console.log(error)
             toast.error('something went wrong')
         }
 

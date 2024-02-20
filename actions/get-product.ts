@@ -8,7 +8,7 @@ const storeId = `${process.env.NEXT_PUBLIC_STOREID}`
 
 const getProduct = async (id: string): Promise<Product> => {
 
-    const full_url = `${url}${id}/get${storeId}`
+    const full_url = `${url}${id}/get/?storeId=${storeId}`
 
     const res = await fetch(full_url)
 

@@ -22,9 +22,6 @@ export default async function CategoryPage({ params, searchParams }: { params: {
     const colors = await getColors()
     const sizes = await getSizes()
 
-    console.log(products)
-
-
     return (
         <div className="bg-white">
             <Container>

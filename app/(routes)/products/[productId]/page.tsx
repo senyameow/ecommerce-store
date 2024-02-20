@@ -15,15 +15,11 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
 
-    console.log(params.productId)
-
     const product = await getProduct(params.productId)
 
     const relatedProducts = await getProducts({
         categoryId: product.Category?.id
     })
-
-    console.log(product.Image?.[0].url)
 
     return (
         <div className="bg-white">
